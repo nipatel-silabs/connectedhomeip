@@ -253,7 +253,7 @@
 	platforms = k32w0
 [submodule "third_party/silabs/matter_support"]
 	path = third_party/silabs/matter_support
-	url = https://github.com/SiliconLabs/sdk_support.git
+	url = https://github.com/nipatel-silabs/sdk_support.git
 	branch = main
 	platforms = efr32
 [submodule "third_party/silabs/gecko_sdk"]
@@ -263,7 +263,7 @@
 	platforms = efr32
 [submodule "third_party/silabs/wiseconnect-wifi-bt-sdk"]
 	path = third_party/silabs/wiseconnect-wifi-bt-sdk
-	url = https://github.com/SiliconLabs/wiseconnect-wifi-bt-sdk.git
+	url = https://github.com/nipatel-silabs/wiseconnect-wifi-bt-sdk.git
 	branch = master
 	platforms = efr32
 [submodule "editline"]
