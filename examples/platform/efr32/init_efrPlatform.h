@@ -23,7 +23,7 @@ extern "C" {
 #endif
 
 void init_efrPlatform(void);
-
+void init_rsiPlatform(void);
 #ifdef __cplusplus
 }
 #endif

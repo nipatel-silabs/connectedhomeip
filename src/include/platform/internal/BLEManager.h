@@ -112,7 +112,8 @@ namespace Internal {
 
 inline CHIP_ERROR BLEManager::Init()
 {
-    return static_cast<ImplClass *>(this)->_Init();
+   // return static_cast<ImplClass *>(this)->_Init();
+   return CHIP_NO_ERROR;
 }
 
 inline void BLEManager::Shutdown()

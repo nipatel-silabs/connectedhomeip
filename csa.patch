@@ -1,0 +1,57 @@
+diff --git a/examples/build_overrides/chip.gni b/examples/build_overrides/chip.gni
+index 23aafc1df..a242e54db 100644
+--- a/examples/build_overrides/chip.gni
++++ b/examples/build_overrides/chip.gni
+@@ -14,5 +14,5 @@
+ 
+ declare_args() {
+   # Root directory for CHIP.
+-  chip_root = "//third_party/connectedhomeip"
++  chip_root = "//../../../../connectedhomeip"
+ }
+diff --git a/examples/build_overrides/efr32_sdk.gni b/examples/build_overrides/efr32_sdk.gni
+index d5a35449d..a633e20f8 100644
+--- a/examples/build_overrides/efr32_sdk.gni
++++ b/examples/build_overrides/efr32_sdk.gni
+@@ -14,5 +14,5 @@
+ 
+ declare_args() {
+   # Root directory for erf32 SDK.
+-  efr32_sdk_build_root = "//third_party/connectedhomeip/third_party/silabs"
++  efr32_sdk_build_root = "//../../../third_party/silabs"
+ }
+diff --git a/third_party/silabs/efr32_sdk.gni b/third_party/silabs/efr32_sdk.gni
+index 93354bcc5..a378b0c1f 100644
+--- a/third_party/silabs/efr32_sdk.gni
++++ b/third_party/silabs/efr32_sdk.gni
+@@ -233,6 +233,7 @@ template("efr32_sdk") {
+         "${efr32_sdk_root}/util/third_party/freertos/kernel/portable/GCC/ARM_CM4F",
+         "${efr32_sdk_root}/platform/radio/rail_lib/plugin/pa-conversions/efr32xg1x/config",
+         "${efr32_sdk_root}/platform/service/device_init/config/s1/",
++        "${efr32_sdk_root}/platform/emdrv/spidrv/inc",
+       ]
+ 
+       libs += [
+@@ -272,6 +273,7 @@ template("efr32_sdk") {
+         "${efr32_sdk_root}/platform/radio/rail_lib/plugin/pa-conversions/efr32xg24",
+         "${efr32_sdk_root}/platform/radio/rail_lib/plugin/pa-conversions/efr32xg24/config",
+         "${efr32_sdk_root}/platform/service/device_init/config/s2/",
++        "${efr32_sdk_root}/platform/emdrv/spidrv/inc",
+       ]
+ 
+       libs += [
+@@ -542,6 +544,8 @@ template("efr32_sdk") {
+         "${efr32_sdk_root}/platform/emlib/src/em_leuart.c",
+         "${efr32_sdk_root}/platform/emlib/src/em_usart.c",
+         "${sdk_support_root}/matter/efr32/${efr32_family}/${efr32_board}/autogen/sl_uartdrv_init.c",
++         "${efr32_sdk_root}/platform/emdrv/spidrv/src/spidrv.c",
++         "${sdk_support_root}/matter/efr32/${efr32_family}/${efr32_board}/autogen/sl_spidrv_init.c",
+       ]
+ 
+       if (defined(invoker.use_external_flash) && use_external_flash) {
+diff --git a/third_party/silabs/matter_support b/third_party/silabs/matter_support
+--- a/third_party/silabs/matter_support
++++ b/third_party/silabs/matter_support
+@@ -1 +1 @@
+-Subproject commit 2425fb72cacd540df505f11e7de81e6270ed1c40
++Subproject commit 2425fb72cacd540df505f11e7de81e6270ed1c40-dirty

@@ -64,7 +64,7 @@ CHIP_ERROR ConnectivityManagerImpl::_Init()
     mFlags.ClearAll();
 
     // TODO Initialize the Chip Addressing and Routing Module.
-
+    init_rsiPlatform();
     // Ensure that station mode is enabled.
     wfx_enable_sta_mode();
 
