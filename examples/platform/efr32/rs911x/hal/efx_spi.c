@@ -287,10 +287,24 @@ int16_t rsi_spi_transfer(uint8_t * tx_buf, uint8_t * rx_buf, uint16_t xlen, uint
         /*
          * Wait for the call-back to complete
          */
-        if (xSemaphoreTake(spi_sem, portMAX_DELAY) == pdTRUE)
-        {
-            xSemaphoreGive(spi_sem);
-        }
+          if (xSemaphoreTake(spi_sem, pdMS_TO_TICKS(250)) == pdTRUE)
+            {
+                 xSemaphoreGive(spi_sem);
+            }
+         else
+            {
+            uint32_t ldma_flags = 0;
+            uint32_t rem_len = 0;
+            rem_len = LDMA_TransferRemainingCount(3);
+            LDMA_StopTransfer(3);
+            ldma_flags = LDMA_IntGet();
+            LDMA_IntClear(ldma_flags);
+            receiveDMA(rx_buf, rem_len);
+          if (xSemaphoreTake(spi_sem, portMAX_DELAY) == pdTRUE) 
+             {
+                 xSemaphoreGive(spi_sem);
+             }
+            }
     }
 
     return RSI_ERROR_NONE;
